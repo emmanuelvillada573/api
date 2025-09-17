@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: notasdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    build: ./api
+    container_name: express_api
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      DB_USER: admin
+      DB_PASSWORD: admin123
+      DB_NAME: notasdb
+      DB_HOST: postgres
+      DB_PORT: 5432
+    depends_on:
+      - postgres
+    volumes:
+      - ./api:/usr/src/app
+      - /usr/src/app/node_modules
+
+volumes:
+  pgdata:
