@@ -1,8 +1,9 @@
-CREATE TABLE profesores (
+CREATE TABLE IF NOT EXISTS profesores (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     departamento VARCHAR(100)
 );
+
 
 CREATE TABLE cursos (
     id SERIAL PRIMARY KEY,
