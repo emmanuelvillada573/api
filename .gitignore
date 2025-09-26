@@ -1,0 +1,23 @@
+# Node modules
+/node_modules/
+
+# Log files
+/logs
+/*.log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+
+# Express files
+*.pid
+
+# npm files
+npm-debug.log
+/package-lock.json
